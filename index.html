@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <title>Group Project</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Group Project</title>
-</head>
-
-<body>
-  <!-- script -->
-  <header>
-    <h1>This is the best heading</h1>
-  </header>
-  <footer>
-    <h2>cool code</h2>
-  </footer>
-  <script src="script.js"></script>
-</body>
-
+  <body>
+    <!-- script -->
+    <header>
+      <h1>Budget Buddy App</h1>
+    </header>
+    <main>
+      <div class="budget-container">
+        <div class="starting-balance-container">Starting Balance</div>
+        <div class="spent-container">Spent WTD</div>
+        <div class="remaining-balance-container">Remaining Balance</div>
+      </div>
+      <div>
+        <table>
+          <tr>
+            <th>Remove</th>
+            <th>Purchase</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Add</th>
+          </tr>
+          <tr>
+            <td>
+              <span
+                class="iconify"
+                data-icon="ant-design:delete-outlined"
+              ></span>
+            </td>
+            <td><input type="text" name="purchase" id="purchase" /></td>
+            <td><input type="option" name="category" id="category" /></td>
+            <td><input type="number" name="amount" id="amount" /></td>
+            <td><span class="iconify" data-icon="carbon:add-alt"></span></td>
+          </tr>
+        </table>
+      </div>
+    </main>
+    <footer>
+      <h2>cool code</h2>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
