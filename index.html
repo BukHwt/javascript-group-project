@@ -1,23 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <title>Group Project</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Group Project</title>
-</head>
-
-<body>
-  <!-- script -->
-  <header>
-    <h1>This is the best heading</h1>
-  </header>
-  <footer>
-    <h2>cool code</h2>
-  </footer>
-  <script src="script.js"></script>
-</body>
-
+  <body>
+    <!-- script -->
+    <header>
+      <img src="assets/beard-icon-1.png" alt="Bearded Buddy Budget Icon" />
+      <h1>Budget Buddy App</h1>
+      <img src="assets/beard-icon-1.png" alt="Bearded Buddy Budget Icon" />
+    </header>
+    <main>
+      <section class="budget-container">
+        <div class="remaining-budget-container">
+          <h2>Beard Budget</h2>
+          <p class="remaining-budget">$____.__</p>
+          <a href="#" class="update-budget">Update Budget</a>
+          <!-- This anchor tag needs to allow user to update budget -->
+        </div>
+        <div class="progress-container">
+          <h2>% of Budget Remaining</h2>
+          <div class="progress-bar outer">
+            <div class="progress-bar inner">$ Current Spent</div>
+            <!-- div for inner (budget used so far) -->
+          </div>
+          <!-- div for outer (total budget) -->
+        </div>
+      </section>
+      <section class="transactions-container">
+        <h2>Transaction History</h2>
+        <table class="transaction-history table">
+          <tr>
+            <th></th>
+            <th>Purchase</th>
+            <th>Category</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+            <td>
+              <span class="iconify" data-icon="akar-icons:trash-can"></span>
+            </td>
+            <td>Cell 1</td>
+            <td>Cell 2</td>
+            <td>Cell 3</td>
+          </tr>
+        </table>
+      </section>
+      <section class="expenses-container">
+        <table class="expenses-history table">
+          <tr>
+            <th></th>
+            <th>Total</th>
+            <th>% of Expenses</th>
+          </tr>
+          <tr>
+            <td>Entertainment</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Food</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Clothing</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Amount</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </section>
+    </main>
+    <footer>
+      <h2>cool code</h2>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
