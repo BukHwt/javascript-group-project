@@ -1,3 +1,91 @@
+/* resets */
+body,
+header,
+footer,
+h1,
+h2,
+h3,
+h4,
+form,
+p,
+input,
+label {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Merriweather Sans", sans-serif;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  /* font: 10px; */
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  background-image: linear-gradient(rgba(255, 225, 168, 1), white);
+}
+
+header img {
+  width: 50px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
+}
+
+.budget-container {
+  background-color: rgba(255, 225, 168, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 20px;
+}
+
+.remaining-budget {
+  border: solid black 1px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.budget-container,
+.transactions-container,
+.expenses-container {
+  border: 2px solid black;
+}
+
+footer {
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-image: linear-gradient(white, rgba(255, 225, 168, 1));
+}
+
+.new-transaction-intiator {
+  position: absolute;
+  display: flex;
+  bottom: 50px;
+  right: 0;
+  z-index: 1;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-transaction-intiator img {
+  border: 1px solid black;
+}
+
+.new-transaction-container,
+.landing-page-container,
+.busted-container {
+  display: none;
 }
