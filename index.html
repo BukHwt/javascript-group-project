@@ -19,25 +19,42 @@
     <!-- script -->
     <header>
       <img src="assets/beard-icon-1.png" alt="Bearded Buddy Budget Icon" />
-      <h1>Budget Buddy App</h1>
+      <h1>Bearded Buddy Budget App</h1>
       <img src="assets/beard-icon-1.png" alt="Bearded Buddy Budget Icon" />
     </header>
     <main>
+      <div class="landing-page-container">
+        <h4>
+          Let us help manage your beard finances. Tell us what your weekly
+          income is and we'll track what you can blow on your beard!
+        </h4>
+        <form class="budget-form">
+          <label for="weeklyIncome">Weekly Income: $</label>
+          <input
+            type="number"
+            name="weeklyIncome"
+            id="weeklyIncome"
+            placeholder="0.00"
+            required
+          />
+          <button>Let's Grow!</button>
+        </form>
+      </div>
       <section class="budget-container">
         <div class="remaining-budget-container">
           <h2>Beard Budget</h2>
-          <p class="remaining-budget">$____.__</p>
+          <h3 class="remaining-budget">$999.99</h3>
           <a href="#" class="update-budget">Update Budget</a>
           <!-- This anchor tag needs to allow user to update budget -->
         </div>
-        <div class="progress-container">
-          <h2>% of Budget Remaining</h2>
-          <div class="progress-bar outer">
-            <div class="progress-bar inner">$ Current Spent</div>
-            <!-- div for inner (budget used so far) -->
-          </div>
-          <!-- div for outer (total budget) -->
+      </section>
+      <section class="progress-container">
+        <h2>% of Budget Remaining</h2>
+        <div class="progress-bar outer">
+          <div class="progress-bar inner">$ Current Spent</div>
+          <!-- div for inner (budget used so far) -->
         </div>
+        <!-- div for outer (total budget) -->
       </section>
       <section class="transactions-container">
         <h2>Transaction History</h2>
@@ -87,10 +104,30 @@
           </tr>
         </table>
       </section>
+      <div class="new-transaction-container">
+        <form class="new-transaction-form">
+          <label for="purchase">Purchase</label>
+          <input type="text" name="purchase" id="purchase" />
+          <label for="category">Category</label>
+          <input type="option" name="category" id="category" />
+          <option value="Bills"></option>
+          <option value="Clothing"></option>
+          <option value="Entertainment"></option>
+          <option value="Food"></option>
+          <label for="amount">Amount</label>
+          <input type="number" name="amount" id="amount" />
+        </form>
+      </div>
+      <div class="busted-container">
+        <h4>Busted! Your beard will suffer this week.</h4>
+        <span class="iconify" data-icon="la:sad-cry-solid"></span>
+      </div>
+      <div class="new-transaction-intiator">
+        New Transaction
+        <img src="assets/plus-circle-1-128.png" alt="Add Transaction" />
+      </div>
     </main>
-    <footer>
-      <h2>cool code</h2>
-    </footer>
+    <footer><p></p></footer>
     <script src="script.js"></script>
   </body>
 </html>
