@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <title>Group Project</title>
   </head>
@@ -12,37 +18,75 @@
   <body>
     <!-- script -->
     <header>
+      <img src="assets/beard-icon-1.png" alt="Bearded Buddy Budget Icon" />
       <h1>Budget Buddy App</h1>
+      <img src="assets/beard-icon-1.png" alt="Bearded Buddy Budget Icon" />
     </header>
     <main>
-      <div class="budget-container">
-        <div class="starting-balance-container">Starting Balance</div>
-        <div class="spent-container">Spent WTD</div>
-        <div class="remaining-balance-container">Remaining Balance</div>
-      </div>
-      <div>
-        <table>
+      <section class="budget-container">
+        <div class="remaining-budget-container">
+          <h2>Beard Budget</h2>
+          <p class="remaining-budget">$____.__</p>
+          <a href="#" class="update-budget">Update Budget</a>
+          <!-- This anchor tag needs to allow user to update budget -->
+        </div>
+        <div class="progress-container">
+          <h2>% of Budget Remaining</h2>
+          <div class="progress-bar outer">
+            <div class="progress-bar inner">$ Current Spent</div>
+            <!-- div for inner (budget used so far) -->
+          </div>
+          <!-- div for outer (total budget) -->
+        </div>
+      </section>
+      <section class="transactions-container">
+        <h2>Transaction History</h2>
+        <table class="transaction-history table">
           <tr>
-            <th>Remove</th>
+            <th></th>
             <th>Purchase</th>
             <th>Category</th>
             <th>Amount</th>
-            <th>Add</th>
           </tr>
           <tr>
             <td>
-              <span
-                class="iconify"
-                data-icon="ant-design:delete-outlined"
-              ></span>
+              <span class="iconify" data-icon="akar-icons:trash-can"></span>
             </td>
-            <td><input type="text" name="purchase" id="purchase" /></td>
-            <td><input type="option" name="category" id="category" /></td>
-            <td><input type="number" name="amount" id="amount" /></td>
-            <td><span class="iconify" data-icon="carbon:add-alt"></span></td>
+            <td>Cell 1</td>
+            <td>Cell 2</td>
+            <td>Cell 3</td>
           </tr>
         </table>
-      </div>
+      </section>
+      <section class="expenses-container">
+        <table class="expenses-history table">
+          <tr>
+            <th></th>
+            <th>Total</th>
+            <th>% of Expenses</th>
+          </tr>
+          <tr>
+            <td>Entertainment</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Food</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Clothing</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Amount</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </section>
     </main>
     <footer>
       <h2>cool code</h2>
