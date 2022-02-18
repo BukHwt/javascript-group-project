@@ -4,7 +4,7 @@ const landingPageContainer = document.querySelector(".landing-page-container");
 const remainingBudget = document.querySelector(".remaining-budget");
 const updateBudget = document.querySelector(".update-budget");
 const progressContainer = document.querySelector(".progress-container");
-const progressBar = document.querySelector(".progress-bar-inner");
+
 const originalText = document.querySelector(".original-text");
 const alternateText = document.querySelector(".alternate-text");
 const newTransaction = document.querySelector(".new-transaction-initiator");
@@ -23,14 +23,17 @@ let foodTotal = 0;
 let clothingTotal = 0;
 let amountTotal = 0;
 let billsTotal = 0;
+let progressBarTotal = 0;
 
 landingPageContainer.addEventListener("submit", (e) => {
   e.preventDefault();
   const weeklyInput = document.querySelector("#weeklyIncome").value;
   if (runningTotal === 0 && e.target.classList.contains("budget-form")) {
     runningTotal = parseInt(weeklyInput);
+    progressBarTotal = parseInt(weeklyInput);
   } else {
     runningTotal += parseInt(weeklyInput);
+    progressBarTotal += parseInt(weeklyInput);
   }
   landingPageContainer.classList.add("hidden");
   remainingBudget.textContent = `$${runningTotal}`;
@@ -58,6 +61,7 @@ newTransactionForm.addEventListener("submit", (e) => {
   const category = document.querySelector("#category").value;
   const amount = document.querySelector("#amount").value;
   const trashIconImg = document.createElement("img");
+  const progressBar = document.querySelector(".progress-bar-inner");
   let foodTotalSpot = document.querySelector(".food-total-spot");
   let foodTotalPercent = document.querySelector(".food-total-percent");
   let clothingTotalSpot = document.querySelector(".clothing-total-spot");
@@ -85,6 +89,8 @@ newTransactionForm.addEventListener("submit", (e) => {
 
   moneySpent += parseInt(amount);
   runningTotal -= parseInt(amount);
+  progressBarTotal += parseInt(amount);
+
   remainingBudget.textContent = `$${runningTotal}`;
 
   if (amount > runningTotal) {
@@ -102,7 +108,6 @@ newTransactionForm.addEventListener("submit", (e) => {
     entertainmentTotal += parseInt(amount);
     entertainmentTotalSpot.textContent = `$${parseInt(entertainmentTotal)}`;
   }
-
   foodTotalPercent.textContent = `${(foodTotal / moneySpent) * 100}%`;
   clothingTotalPercent.textContent = `${(clothingTotal / moneySpent) * 100}%`;
   billsTotalPercent.textContent = `${(billsTotal / moneySpent) * 100}%`;
@@ -110,6 +115,9 @@ newTransactionForm.addEventListener("submit", (e) => {
     (entertainmentTotal / moneySpent) * 100
   }%`;
   amountTotal.textContent = moneySpent;
+  progressBar.style.width = `${(moneySpent / progressBarTotal) * 100}%`;
   newTransactionContainer.classList.toggle("hidden");
   newTransactionForm.reset();
+  console.log(runningTotal);
+  console.log(moneySpent);
 });
