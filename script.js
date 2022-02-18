@@ -11,7 +11,7 @@ const newTransaction = document.querySelector(".new-transaction-initiator");
 const cancelButton = document.querySelector(".cancel-button");
 const newTransactionForm = document.querySelector(".new-transaction-form");
 const transactionHistoryTable = document.querySelector(".transaction-history");
-
+const bustedContainer = document.querySelector(".busted-container");
 const newTransactionContainer = document.querySelector(
   ".new-transaction-container"
 );
@@ -77,6 +77,7 @@ newTransactionForm.addEventListener("submit", (e) => {
   let cell3 = row.insertCell(2);
   let cell4 = row.insertCell(3);
   trashIconImg.src = "assets/trash_icon_128726.png";
+  trashIconImg.classList.add("trash-icon");
   cell1.append(trashIconImg);
   cell2.innerHTML = purchase;
   cell3.innerHTML = category;
@@ -85,7 +86,10 @@ newTransactionForm.addEventListener("submit", (e) => {
   moneySpent += parseInt(amount);
   runningTotal -= parseInt(amount);
   remainingBudget.textContent = `$${runningTotal}`;
-  if (category === "Food") {
+
+  if (amount > runningTotal) {
+    bustedContainer.classList.toggle("hidden");
+  } else if (category === "Food") {
     foodTotal += parseInt(amount);
     foodTotalSpot.textContent = `$${parseInt(foodTotal)}`;
   } else if (category === "Clothing") {
@@ -98,6 +102,7 @@ newTransactionForm.addEventListener("submit", (e) => {
     entertainmentTotal += parseInt(amount);
     entertainmentTotalSpot.textContent = `$${parseInt(entertainmentTotal)}`;
   }
+
   foodTotalPercent.textContent = `${(foodTotal / moneySpent) * 100}%`;
   clothingTotalPercent.textContent = `${(clothingTotal / moneySpent) * 100}%`;
   billsTotalPercent.textContent = `${(billsTotal / moneySpent) * 100}%`;
