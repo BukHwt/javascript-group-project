@@ -9,6 +9,23 @@ let entertainment = 0;
 let food = 0;
 const progressBar = document.querySelector(".progress-bar-inner");
 const transactionHistoryTable = document.querySelector(".transaction-history");
+const cancelTransactionLink = document.querySelector(".cancel-button");
+const foodTotalSpot = document.querySelector(".food-total-spot");
+const foodTotalPercent = document.querySelector(".food-total-percent");
+const billsTotalPercent = document.querySelector(".bills-total-percent");
+const billsTotalSpot = document.querySelector(".bills-total-spot");
+const clothingTotalSpot = document.querySelector(".clothing-total-spot");
+const clothingTotalPercent = document.querySelector(".clothing-total-percent");
+const entertainmentTotalSpot = document.querySelector(
+  ".entertainment-total-spot"
+);
+const entertainmentTotalPercent = document.querySelector(
+  ".entertainment-total-percent"
+);
+const bustedContainer = document.querySelector(".busted-container");
+const updateLink = document.querySelector(".update-budget");
+const amountTotal = document.querySelector(".amount-total");
+const totalSpentSpot = document.querySelector(".total-spent-spot");
 
 //starting budget form
 const budgetForm = document.querySelector(".budget-form");
@@ -29,6 +46,11 @@ const updateRemainingBalanceAndProgressBar = () => {
   totalSpent = expenses.reduce((prev, curr) => prev + curr.amount, 0);
   remainingBudget.textContent = `$${budget - totalSpent}.00`;
   progressBar.style.width = `${(totalSpent / budget) * 100}%`;
+
+  if (totalSpent > budget) {
+    bustedContainer.classList.remove("hidden");
+  }
+  totalSpentSpot.textContent = `$${totalSpent}.00`;
 };
 
 const updateTransactionTable = () => {
@@ -68,48 +90,30 @@ const calcSumForCategory = (category) => {
     }
   });
   return sum;
-  // return expenses.reduce((prev, curr) => {
-  //   if (curr.category === category) {
-  //     return prev + curr.amount;
-  //   }
-  // }, 0);
 };
 
 const updateExpensesTable = () => {
+  totalSpent += 0.00000000001;
   bills = calcSumForCategory("Bills");
   clothing = calcSumForCategory("Clothing");
   entertainment = calcSumForCategory("Entertainment");
   food = calcSumForCategory("Food");
-  const billsTotalSpot = document.querySelector(".bills-total-spot");
-  const billsTotalPercent = document.querySelector(".bills-total-percent");
   billsTotalSpot.textContent = `$${bills}.00`;
   billsTotalPercent.textContent = `${((bills / totalSpent) * 100).toFixed(2)}%`;
-  const clothingTotalSpot = document.querySelector(".clothing-total-spot");
-  const clothingTotalPercent = document.querySelector(
-    ".clothing-total-percent"
-  );
   clothingTotalSpot.textContent = `$${clothing}.00`;
   clothingTotalPercent.textContent = `${((clothing / totalSpent) * 100).toFixed(
     2
   )}%`;
-  const entertainmentTotalSpot = document.querySelector(
-    ".entertainment-total-spot"
-  );
-  const entertainmentTotalPercent = document.querySelector(
-    ".entertainment-total-percent"
-  );
   entertainmentTotalSpot.textContent = `$${entertainment}.00`;
   entertainmentTotalPercent.textContent = `${(
     (entertainment / totalSpent) *
     100
   ).toFixed(2)}%`;
-  const foodTotalSpot = document.querySelector(".food-total-spot");
-  const foodTotalPercent = document.querySelector(".food-total-percent");
   foodTotalSpot.textContent = `$${food}.00`;
   foodTotalPercent.textContent = `${((food / totalSpent) * 100).toFixed(2)}%`;
+  amountTotal.textContent = `$${totalSpent.toFixed(2)}`;
 };
 
-const updateLink = document.querySelector(".update-budget");
 updateLink.addEventListener("click", (e) => {
   const originalText = document.querySelector(".original-text");
   const alternateText = document.querySelector(".alternate-text");
@@ -126,9 +130,17 @@ const display = () => {
 
 budgetForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  budget = parseInt(document.querySelector("#weeklyIncome").value);
-  remainingBudget.textContent = `$${budget}.00`;
-  landingPage.classList.add("hidden");
+  if (budget === 0) {
+    budget = parseInt(document.querySelector("#weeklyIncome").value);
+    remainingBudget.textContent = `$${budget}.00`;
+    landingPage.classList.add("hidden");
+  } else {
+    budget += parseInt(document.querySelector("#weeklyIncome").value);
+    remainingBudget.textContent = `$${budget}.00`;
+    landingPage.classList.add("hidden");
+  }
+  display();
+  budgetForm.reset();
 });
 
 newTransactionInitiator.addEventListener("click", () => {
@@ -142,6 +154,14 @@ transactionForm.addEventListener("submit", (e) => {
   const amount = parseInt(document.querySelector("#amount").value);
   expenses.push({ purchase, category, amount });
   newTransactionContainer.classList.add("hidden");
+  display();
+  transactionForm.reset();
+});
+
+transactionForm.addEventListener("click", (e) => {
+  if (e.target.classList.contains("cancel-button")) {
+    newTransactionContainer.classList.toggle("hidden");
+  }
   display();
 });
 
