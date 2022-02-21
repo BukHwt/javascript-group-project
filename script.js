@@ -7,6 +7,7 @@ let bills = 0;
 let clothing = 0;
 let entertainment = 0;
 let food = 0;
+
 const progressBar = document.querySelector(".progress-bar-inner");
 const transactionHistoryTable = document.querySelector(".transaction-history");
 const cancelTransactionLink = document.querySelector(".cancel-button");
@@ -57,6 +58,7 @@ const updateTransactionTable = () => {
   transactionHistoryTable.textContent = "";
   let header = transactionHistoryTable.insertRow(0);
   header.insertCell(0);
+  header.classList.add("table-header");
   let th2 = header.insertCell(1);
   let th3 = header.insertCell(2);
   let th4 = header.insertCell(3);
@@ -170,5 +172,11 @@ transactionHistoryTable.addEventListener("click", (e) => {
     const index = e.target.dataset.index;
     expenses.splice(index, 1);
     display();
+  }
+});
+
+bustedContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("cancel-button")) {
+    bustedContainer.classList.add("hidden");
   }
 });
