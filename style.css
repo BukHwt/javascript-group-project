@@ -19,6 +19,7 @@ tr {
 
 body {
   font-family: "Merriweather Sans", sans-serif;
+  color: rgba(29, 30, 24, 1);
 }
 
 header {
@@ -27,7 +28,7 @@ header {
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  background-image: linear-gradient(rgba(255, 225, 168, 1), white);
+  background-image: linear-gradient(rgba(125, 132, 145, 1), white);
 }
 
 header img {
@@ -49,8 +50,9 @@ main {
   align-items: center;
   text-align: center;
   height: 25%;
-  border: 1px solid black;
-  background-color: rgba(226, 109, 92, 1);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgba(39, 90, 44, 1);
+  color: white;
   padding: 50px;
   margin: 50px;
   border-radius: 25px;
@@ -85,13 +87,41 @@ label {
   font-size: large;
 }
 
+.grow-button:hover,
+.submit-transaction-button:hover {
+  box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.grow-button:active,
+.submit-transaction-button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.update-budget {
+  text-decoration: none;
+  color: rgba(42, 180, 33, 1);
+}
+
+.cancel-button {
+  margin-top: 25px;
+  text-decoration: none;
+  color: white;
+}
+
 h4 {
   margin: 20px;
   font-size: larger;
 }
 
+h5 {
+  font-size: x-large;
+  margin: 15px 0;
+}
+
 .budget-container {
-  background-color: rgba(201, 203, 163, 1);
+  background-color: rgba(125, 132, 145, 0.25);
+  color: rgba(42, 180, 33, 1);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
   justify-content: center;
@@ -120,10 +150,10 @@ h4 {
 .progress-bar-outer {
   position: relative;
   margin: 20px 0;
-  background-color: lightgray;
+  background-color: rgba(125, 132, 145, 0.5);
   padding: 4px;
   height: 50px;
-  width: 100%;
+  width: 80%;
   display: flex;
   align-items: center;
   border-radius: 5px;
@@ -131,8 +161,7 @@ h4 {
 }
 
 .progress-bar-inner {
-  border: 4px solid rgb(226, 109, 92);
-  background-color: rgb(226, 109, 92);
+  background-color: rgb(240, 45, 58);
   box-sizing: border-box;
   border-radius: 5px;
   height: 80%;
@@ -140,7 +169,13 @@ h4 {
 
 .total-spent-spot {
   position: absolute;
-  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: x-large;
+  font-weight: bolder;
+  color: white;
+  text-shadow: 2px 2px 8px rgb(7, 7, 7);
 }
 
 .budget-container,
@@ -156,8 +191,8 @@ h4 {
   box-sizing: border-box;
   margin: 80px 0;
   width: 80vw;
-  padding: 40px;
-  background-color: rgba(226, 110, 92, 0.109);
+  padding: 20px;
+  background-color: rgba(125, 132, 145, 0.25);
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
@@ -171,6 +206,10 @@ td {
   margin: 20px 100px;
 }
 
+tr {
+  text-align: left;
+}
+
 .expenses-container {
   display: flex;
   flex-direction: column;
@@ -178,34 +217,32 @@ td {
   box-sizing: border-box;
   margin: 80px 0;
   width: 80vw;
-  padding: 40px;
-  background-color: rgba(226, 110, 92, 0.109);
+  padding: 20px;
+  background-color: rgba(125, 132, 145, 0.25);
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
-}
-
-footer {
-  /* height: 40px;
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  background-image: linear-gradient(white, rgba(255, 225, 168, 1)); */
 }
 
 .new-transaction-initiator {
   position: absolute;
   display: flex;
   bottom: 50px;
-  right: 0;
+  right: 25px;
   z-index: 1;
   height: 50px;
   justify-content: center;
   align-items: center;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
 .new-transaction-initiator img {
   z-index: 2;
+}
+.new-transaction-initiator:hover {
+  background-color: rgba(42, 180, 33, 1);
 }
 
 .new-transaction-container {
@@ -215,13 +252,9 @@ footer {
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 25%;
-  background-color: rgba(226, 109, 92, 1);
-  padding: 50px;
-  margin: 50px;
-  border-radius: 25px;
-  z-index: 1;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgba(124, 10, 2, 1);
+  border-radius: 25px;
 }
 
 .new-transaction-form {
@@ -232,7 +265,8 @@ footer {
   align-items: center;
   text-align: center;
   height: 25%;
-  background-color: rgba(226, 109, 92, 1);
+  background-color: rgba(39, 90, 44, 1);
+  color: white;
   padding: 50px;
   margin: 50px;
   border-radius: 25px;
@@ -248,11 +282,12 @@ footer {
   align-items: center;
   text-align: center;
   height: 25%;
-  background-color: rgba(226, 109, 92, 1);
+  background-color: rgba(39, 90, 44, 1);
+  color: white;
   padding: 50px;
   margin: 50px;
   border-radius: 25px;
-  z-index: 1;
+  z-index: 2;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -271,13 +306,18 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     width: 100vw;
   }
 
   .transactions-container,
   .expenses-container {
     width: 40vw;
+    min-height: 250px;
+  }
+
+  .transactions-container {
+    justify-content: flex-start;
   }
 
   #not-desktop {

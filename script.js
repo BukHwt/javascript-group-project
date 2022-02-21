@@ -80,7 +80,7 @@ const updateTransactionTable = () => {
     cell1.append(trashIconImg);
     cell2.innerHTML = expense.purchase;
     cell3.innerHTML = expense.category;
-    cell4.innerHTML = expense.amount;
+    cell4.textContent = `$${expense.amount}.00`;
   });
 };
 
