@@ -9,7 +9,10 @@ h4,
 form,
 p,
 input,
-label {
+label,
+th,
+td,
+tr {
   margin: 0;
   padding: 0;
 }
@@ -21,7 +24,6 @@ body {
 header {
   display: flex;
   width: 100%;
-  /* font: 10px; */
   align-items: center;
   justify-content: space-between;
   text-align: center;
@@ -35,8 +37,8 @@ header img {
 main {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
-  /* height: 100vh; */
+  justify-content: center;
+  align-items: center;
 }
 
 .landing-page-container {
@@ -49,32 +51,79 @@ main {
   height: 25%;
   border: 1px solid black;
   background-color: rgba(226, 109, 92, 1);
+  padding: 50px;
+  margin: 50px;
+  border-radius: 25px;
+  z-index: 1;
+}
+
+.budget-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#weeklyIncome,
+#purchase,
+#category,
+#amount {
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.grow-button,
+.submit-transaction-button {
+  padding: 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: large;
+}
+
+h4 {
+  margin: 20px;
+  font-size: larger;
 }
 
 .budget-container {
-  background-color: rgba(253, 231, 190, 0.466);
+  background-color: rgba(201, 203, 163, 1);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  box-sizing: border-box;
   padding: 10px 0;
-  margin: 40px 40px;
+  margin: 40px 0;
   border-radius: 20px;
+  width: 80vw;
+}
+
+.remaining-budget {
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 60px;
 }
 
 .progress-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 80%;
 }
 
 .progress-bar-outer {
-  margin-top: 20px;
+  position: relative;
+  margin: 20px 0;
   background-color: lightgray;
   padding: 4px;
   height: 50px;
-  width: 80%;
+  width: 100%;
   display: flex;
   align-items: center;
   border-radius: 5px;
@@ -89,10 +138,9 @@ main {
   height: 80%;
 }
 
-.remaining-budget {
-  border: solid black 1px;
-  padding: 10px;
-  margin: 10px 0;
+.total-spent-spot {
+  position: absolute;
+  font-weight: bold;
 }
 
 .budget-container,
@@ -102,15 +150,35 @@ main {
 }
 
 .transactions-container {
-  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 80px 0;
+  width: 80vw;
+  padding: 40px;
   background-color: rgba(226, 110, 92, 0.109);
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
 }
 
+.table-header {
+  font-weight: bold;
+}
+
+td {
+  margin: 20px 100px;
+}
+
 .expenses-container {
-  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 80px 0;
+  width: 80vw;
+  padding: 40px;
   background-color: rgba(226, 110, 92, 0.109);
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -118,11 +186,11 @@ main {
 }
 
 footer {
-  height: 40px;
+  /* height: 40px;
   position: fixed;
   bottom: 0;
   width: 100vw;
-  background-image: linear-gradient(white, rgba(255, 225, 168, 1));
+  background-image: linear-gradient(white, rgba(255, 225, 168, 1)); */
 }
 
 .new-transaction-initiator {
@@ -137,26 +205,95 @@ footer {
 }
 
 .new-transaction-initiator img {
-  border: 1px solid black;
   z-index: 2;
 }
 
-.new-transaction-form {
+.new-transaction-container {
   position: fixed;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border: 1px solid black;
+  height: 25%;
   background-color: rgba(226, 109, 92, 1);
+  padding: 50px;
+  margin: 50px;
+  border-radius: 25px;
+  z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.new-transaction-form {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 25%;
+  background-color: rgba(226, 109, 92, 1);
+  padding: 50px;
+  margin: 50px;
+  border-radius: 25px;
+  z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.busted-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 25%;
+  background-color: rgba(226, 109, 92, 1);
+  padding: 50px;
+  margin: 50px;
+  border-radius: 25px;
+  z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.iconify {
+  margin: 20px;
+  height: 100px;
+  width: 100px;
 }
 
 .hidden {
   display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100vw;
+  }
+
+  .transactions-container,
+  .expenses-container {
+    width: 40vw;
+  }
+
+  #not-desktop {
+    display: none;
+  }
+
+  header {
+    justify-content: center;
+    padding-top: 100px;
+  }
+
+  header img {
+    position: relative;
+    height: 125px;
+    width: 150px;
+    right: 100px;
+    top: 20px;
+  }
 }
